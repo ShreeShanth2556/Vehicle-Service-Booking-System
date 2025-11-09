@@ -1,30 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
-
   return (
-    <nav className="navbar">
-      <h2>🚗 Vehicle Service</h2>
-      <div>
-        <Link to="/">Home</Link>
-        {user ? (
-          <>
-            <Link to="/book">Book Service</Link>
-            <Link to="/bookings">My Bookings</Link>
-            <Link to="/profile">Profile</Link>
-            {user.role === "admin" && <Link to="/admin">Admin</Link>}
-            {user.role === "workshop" && <Link to="/workshop">Workshop</Link>}
-            <button onClick={logout}>Logout</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-          </>
-        )}
+    <nav className="bg-blue-600 p-4 text-white shadow-lg">
+      <div className="container mx-auto flex justify-between items-center">
+        <h1 className="text-xl font-bold">Vehicle Service Booking</h1>
+        <div className="space-x-4">
+          <Link to="/" className="hover:text-gray-300">
+            Register
+          </Link>
+          <Link to="/dashboard" className="hover:text-gray-300">
+            Dashboard
+          </Link>
+        </div>
       </div>
     </nav>
   );
